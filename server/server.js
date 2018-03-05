@@ -4,6 +4,7 @@ const helmet = require("helmet");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const User = require("./user");
+const axios = require("axios");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -35,6 +36,17 @@ app.post("/newuser", (req, res) => {
           .json({ error: "Error creating the new user. Try again." });
       });
   }
+});
+
+app.get("/", (req, res) => {
+  axios
+    .get("http://www.recipepuppy.com/api/")
+    .then(({ data }) => {
+      res.status(200).json(data.results);
+    })
+    .catch(err => {
+      res.status(500).json({ error: "Could not get recipes. Try again." });
+    });
 });
 
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
