@@ -1,4 +1,6 @@
 import React, { PureComponent } from "react";
+import { connect } from "react-redux";
+import { getRecipes } from "../../store/actions";
 
 // material-ui
 import AppBar from "material-ui/AppBar";
@@ -13,6 +15,9 @@ class TopNav extends PureComponent {
 
   handleChange = (event, index, value) => {
     this.setState({ value });
+    console.log(event.target.textContent);
+    const url = `http://localhost:5000/${event.target.textContent}`;
+    this.props.getRecipes(url);
   };
 
   render() {
@@ -39,4 +44,4 @@ class TopNav extends PureComponent {
   }
 }
 
-export default TopNav;
+export default connect(null, { getRecipes })(TopNav);

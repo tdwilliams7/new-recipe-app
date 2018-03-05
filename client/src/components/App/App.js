@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { getRecipes } from "../../store/actions";
 import "./App.css";
 
 // components
@@ -7,6 +9,9 @@ import TopNav from "../TopNav/TopNav";
 // material-ui
 
 class App extends Component {
+  componentDidMount() {
+    this.props.getRecipes();
+  }
   render() {
     return (
       <div className="App">
@@ -22,4 +27,10 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    state
+  };
+};
+
+export default connect(mapStateToProps, { getRecipes })(App);

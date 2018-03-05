@@ -1,4 +1,4 @@
-import { GETTING_RECIPES, RECIPES_RECEIVED, ERROR } from "../reducers";
+import { GETTING_RECIPES, RECIPES_RECEIVED, ERROR } from "../actions";
 
 const initialState = {
   recipes: [],
@@ -6,7 +6,7 @@ const initialState = {
   error: null
 };
 
-const recipeReducer = (state = initialState, action) => {
+export const recipeReducer = (state = initialState, action) => {
   switch (action.type) {
     case GETTING_RECIPES:
       return { ...state, action.payload}
