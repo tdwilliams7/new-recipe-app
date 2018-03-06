@@ -1,12 +1,23 @@
 import React, { PureComponent } from "react";
 
+// material-ui
+import { Card, CardActions, CardHeader, CardMedia } from "material-ui/Card";
+import FlatButton from "material-ui/FlatButton";
+
 class RecipeCard extends PureComponent {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return this.props.recipes.map((recipe, i) => {
-      return <h1 key={i}>{recipe.title}</h1>;
+      return (
+        <Card key={i}>
+          <CardHeader title={recipe.title} />
+          <CardMedia>
+            <img src={recipe.thumbnail} alt={recipe.title} />
+          </CardMedia>
+          <CardActions>
+            <FlatButton href={recipe.href} label="Check it out" />
+          </CardActions>
+        </Card>
+      );
     });
   }
 }

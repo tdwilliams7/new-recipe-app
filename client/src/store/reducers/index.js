@@ -12,6 +12,8 @@ export const recipeReducer = (state = initialState, action) => {
       return { ...state, fetchingRecipes: true };
     case RECIPES_RECEIVED:
       return { ...state, fetchingRecipes: false, recipes: action.payload };
+    case ERROR:
+      return { ...state, error: action.payload };
     default:
       return state;
   }

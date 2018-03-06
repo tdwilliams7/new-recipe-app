@@ -4,7 +4,6 @@ import { getRecipes } from "../../store/actions";
 
 // material-ui
 import AppBar from "material-ui/AppBar";
-import IconButton from "material-ui/IconButton";
 import SelectField from "material-ui/SelectField";
 import MenuItem from "material-ui/MenuItem";
 
