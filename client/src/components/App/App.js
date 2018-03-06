@@ -5,6 +5,7 @@ import "./App.css";
 
 // components
 import TopNav from "../TopNav/TopNav";
+import RecipeCard from "../RecipeCard/RecipeCard";
 
 // material-ui
 
@@ -22,14 +23,19 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         <TopNav />
+        <RecipeCard recipes={this.props.recipes} />
       </div>
     );
   }
 }
 
+App.defaultProps = {
+  recipes: []
+};
+
 const mapStateToProps = state => {
   return {
-    state
+    recipes: state.recipes
   };
 };
 

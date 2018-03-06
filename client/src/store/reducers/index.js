@@ -9,8 +9,10 @@ const initialState = {
 export const recipeReducer = (state = initialState, action) => {
   switch (action.type) {
     case GETTING_RECIPES:
-      return { ...state, action.payload}
+      return { ...state, fetchingRecipes: true };
+    case RECIPES_RECEIVED:
+      return { ...state, fetchingRecipes: false, recipes: action.payload };
     default:
-      return state
+      return state;
   }
-}
+};

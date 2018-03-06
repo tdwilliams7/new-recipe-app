@@ -7,8 +7,9 @@ import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import logger from "redux-logger";
+import { recipeReducer } from "./store/reducers";
 
-const store = createStore(() => {}, applyMiddleware(thunk, logger));
+const store = createStore(recipeReducer, applyMiddleware(thunk, logger));
 
 ReactDOM.render(
   <MuiThemeProvider>

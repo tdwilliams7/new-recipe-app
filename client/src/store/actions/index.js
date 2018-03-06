@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const GETTING_RECIPES = "GET_RECIPES";
-const RECIPES_RECEIVED = "RECIPES_RECEIVED";
+export const GETTING_RECIPES = "GET_RECIPES";
+export const RECIPES_RECEIVED = "RECIPES_RECEIVED";
 export const ERROR = "ERROR";
 
 const rootURL = "http://localhost:5000/";
