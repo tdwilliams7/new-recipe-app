@@ -6,11 +6,11 @@ export const ERROR = "ERROR";
 
 const rootURL = "http://localhost:5000/";
 
-export const getRecipes = (url = rootURL) => {
+export const getRecipes = food => {
   return dispatch => {
     dispatch({ type: GETTING_RECIPES });
     axios
-      .get(url)
+      .get(rootURL, { params: { food } })
       .then(({ data }) => {
         dispatch({ type: RECIPES_RECEIVED, payload: data });
       })

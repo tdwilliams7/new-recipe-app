@@ -16,8 +16,8 @@ class TopNav extends PureComponent {
   handleChange = (event, index, value) => {
     this.setState({ value });
     console.log(event.target.textContent);
-    const url = `http://localhost:5000/food=?i=${event.target.textContent}`;
-    this.props.getRecipes(url);
+    const query = event.target.textContent;
+    this.props.getRecipes(query);
   };
 
   render() {

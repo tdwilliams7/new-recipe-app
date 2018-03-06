@@ -39,14 +39,25 @@ app.post("/newuser", (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  axios
-    .get("http://www.recipepuppy.com/api/")
-    .then(({ data }) => {
-      res.status(200).json(data.results);
-    })
-    .catch(err => {
-      res.status(500).json({ error: "Could not get recipes. Try again." });
-    });
+  if (req.query.food) {
+    axios
+      .get(`http://www.recipepuppy.com/api/?i=${req.query.food}`)
+      .then(({ data }) => {
+        res.status(200).json(data.results);
+      })
+      .catch(err => {
+        res.status(500).json({ error: "Could not get recipes. Try again." });
+      });
+  } else {
+    axios
+      .get("http://www.recipepuppy.com/api/")
+      .then(({ data }) => {
+        res.status(200).json(data.results);
+      })
+      .catch(err => {
+        res.status(500).json({ error: "Could not get recipes. Try again." });
+      });
+  }
 });
 
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
